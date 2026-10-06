@@ -4,7 +4,7 @@ Mapa web de **incidencias de tráfico en España en tiempo real**, hecho solo co
 
 > Proyecto personal. No está afiliado ni respaldado por la Dirección General de Tráfico.
 
-**Demo:** _añade aquí la URL de Vercel cuando la tengas_
+**Demo:** <https://hay-trafico.vercel.app>
 
 <!-- Añade capturas: docs/screenshot-desktop.png y docs/screenshot-mobile.png -->
 
@@ -74,11 +74,10 @@ npm run build && npm start
 
 No hace falta `vercel.json` ni base de datos. Funciona en el plan gratuito.
 
-1. Sube el proyecto a GitHub. El directorio aún no es un repositorio: `git init`, commit y push.
+1. Sube el proyecto a GitHub.
 2. En Vercel: **Add New → Project**, importa el repo. Se detecta Next.js solo, sin cambiar el build ni el output.
-3. Antes de desplegar, añade en **Settings → Environment Variables**:
-   - `NEXT_PUBLIC_SITE_URL` = la URL final, por ejemplo `https://haytrafico.tudominio.com`. La usan canonical, sitemap y robots.
-4. Despliega. Si luego añades un dominio propio, actualiza `NEXT_PUBLIC_SITE_URL` y redespliega, porque es una variable de build.
+3. No hace falta definir ninguna variable de entorno. La URL pública (canonical, sitemap, robots) se toma automáticamente del dominio de producción que Vercel asigna al proyecto, por ejemplo `https://hay-trafico.vercel.app`.
+4. Despliega. Si añades un dominio propio y quieres que sea el canónico, define `NEXT_PUBLIC_SITE_URL=https://tu-dominio` y redespliega, porque se resuelve en el build.
 
 Comprobaciones tras el despliegue:
 
@@ -101,7 +100,7 @@ Todas son opcionales (ver `.env.example`). La DGT no requiere API key.
 | `NEXT_PUBLIC_POLL_INTERVAL` | `60` | Segundos entre consultas del navegador |
 | `NEXT_PUBLIC_TILE_URL` | OSM estándar | Plantilla `{z}/{x}/{y}` del proveedor de tiles |
 | `NEXT_PUBLIC_TILE_ATTRIBUTION` | OSM | Atribución en HTML |
-| `NEXT_PUBLIC_SITE_URL` | `http://localhost:3000` | Canonical, sitemap y robots |
+| `NEXT_PUBLIC_SITE_URL` | dominio de producción de Vercel, o `http://localhost:3000` en local | Canonical, sitemap y robots (solo necesaria con dominio propio) |
 
 Las variables `NEXT_PUBLIC_*` se incorporan en el build: tras cambiarlas hay que redesplegar. No hay secretos en el repositorio.
 
