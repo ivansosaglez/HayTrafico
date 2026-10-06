@@ -1,6 +1,6 @@
 # HayTrafico
 
-Mapa web de **incidencias de tráfico en España en tiempo real**, hecho solo con datos abiertos de la DGT y software libre. Coste de operación: 0 €. Sin API keys, sin cuentas y sin rastreadores.
+Mapa web de **incidencias de tráfico en España en tiempo real**, hecho solo con datos abiertos de la DGT y software libre.
 
 > Proyecto personal. No está afiliado ni respaldado por la Dirección General de Tráfico.
 
