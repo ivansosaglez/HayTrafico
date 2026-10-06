@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+html, body { height: 100%; }
+body {
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #f8fafc;
+  color: #0f172a;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer components {
+/* Controles reutilizables */
+.field {
+  @apply w-full min-w-0 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-sm text-slate-900 shadow-sm;
+}
+.field:focus-visible { @apply outline-2 outline-offset-1 outline-blue-600; }
+.btn-link {
+  @apply inline-flex items-center rounded text-sm font-medium text-blue-700 underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+}
+.btn-outline {
+  @apply inline-flex items-center rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm font-medium text-slate-800 hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+}
+.btn-primary {
+  @apply inline-flex items-center rounded-lg bg-blue-700 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-800 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600;
+}
+.icon-btn {
+  @apply grid h-8 w-8 shrink-0 place-items-center rounded-full text-slate-500 hover:bg-slate-100 hover:text-slate-900 focus-visible:outline-2 focus-visible:outline-blue-600;
+}
+
+}
+
+/* ---------- Símbolo de tipo (forma distinta por tipo, además del color) ---------- */
+.tm-glyph {
+  display: inline-grid; place-items: center; width: 18px; height: 18px;
+  color: #fff; font-size: 11px; font-weight: 800; line-height: 1; border-radius: 50%;
+}
+.tm-glyph[data-type="roadworks"] { border-radius: 3px; }
+.tm-glyph[data-type="closure"] { border-radius: 3px; }
+.tm-glyph[data-type="hazard"] { border-radius: 0; clip-path: polygon(50% 0, 100% 100%, 0 100%); padding-top: 5px; }
+.tm-glyph[data-type="congestion"] { border-radius: 6px; }
+
+/* ---------- Marcadores del mapa ---------- */
+.tm-pin-wrap { background: none; border: 0; }
+.tm-pin {
+  display: grid; place-items: center; width: 32px; height: 32px; color: #fff;
+  font-size: 16px; font-weight: 800; line-height: 1; border: 2px solid #fff; border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.45); transition: transform 0.12s;
+}
+.tm-pin[data-type="roadworks"], .tm-pin[data-type="closure"] { border-radius: 6px; }
+.tm-pin[data-type="congestion"] { border-radius: 10px; }
+.tm-pin[data-type="hazard"] { border-radius: 50% 50% 50% 4px; }
+.tm-pin-sel { transform: scale(1.35); outline: 3px solid #2563eb; outline-offset: 2px; z-index: 10; }
+.leaflet-marker-icon:focus-visible .tm-pin { outline: 3px solid #2563eb; outline-offset: 2px; }
+
+.tm-cluster-wrap { background: none; border: 0; }
+.tm-cluster {
+  display: grid; place-items: center; width: 100%; height: 100%; border-radius: 50%;
+  background: #1e3a8a; color: #fff; font-weight: 700; font-size: 13px;
+  border: 3px solid rgba(255, 255, 255, 0.9); box-shadow: 0 1px 5px rgba(15, 23, 42, 0.5);
+}
+
+.leaflet-container { font-family: inherit; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}

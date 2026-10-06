@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<d2:payload xsi:type="sit:SituationPublication" lang="es" xmlns:com="http://levelC/schema/3/common" xmlns:loc="http://levelC/schema/3/locationReferencing" xmlns:lse="http://levelC/schema/3/locationReferencingSpanishExtension" xmlns:d2="http://levelC/schema/3/d2Payload" xmlns:sit="http://levelC/schema/3/situation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <com:publicationTime>2026-10-06T17:10:08.571+02:00</com:publicationTime>
+  <!-- 1: sin ubicación ni coordenadas -->
+  <sit:situation id="s1">
+    <sit:situationRecord xsi:type="sit:GenericSituationRecord" id="r-nolocation" version="1">
+      <sit:situationRecordVersionTime>2026-10-06T10:00:00.000+02:00</sit:situationRecordVersionTime>
+      <sit:validity><com:validityStatus>active</com:validityStatus></sit:validity>
+    </sit:situationRecord>
+  </sit:situation>
+  <!-- 2: coordenadas fuera de España -->
+  <sit:situation id="s2">
+    <sit:situationRecord xsi:type="sit:GenericSituationRecord" id="r-badcoords" version="1">
+      <sit:cause><sit:causeType>accident</sit:causeType></sit:cause>
+      <sit:locationReference xsi:type="loc:PointLocation">
+        <loc:tpegPointLocation xsi:type="loc:TpegSimplePoint">
+          <loc:point xsi:type="loc:TpegNonJunctionPoint">
+            <loc:pointCoordinates><loc:latitude>0</loc:latitude><loc:longitude>0</loc:longitude></loc:pointCoordinates>
+          </loc:point>
+        </loc:tpegPointLocation>
+      </sit:locationReference>
+    </sit:situationRecord>
+  </sit:situation>
+  <!-- 3: sin id (se descarta) -->
+  <sit:situation id="s3">
+    <sit:situationRecord xsi:type="sit:GenericSituationRecord" version="1"/>
+  </sit:situation>
+  <!-- 4: fecha corrupta y tipo desconocido -->
+  <sit:situation id="s4">
+    <sit:situationRecord xsi:type="sit:SomethingNew" id="r-unknown" version="1">
+      <sit:situationRecordVersionTime>no-es-una-fecha</sit:situationRecordVersionTime>
+      <sit:cause><sit:causeType>algoNuevo</sit:causeType></sit:cause>
+    </sit:situationRecord>
+  </sit:situation>
+  <!-- 5: situación vacía -->
+  <sit:situation id="s5"/>
+</d2:payload>
